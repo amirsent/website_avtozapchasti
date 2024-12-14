@@ -1,0 +1,85 @@
+
+ 
+ @media screen and (max-width: 1199px) {
+
+    header form div{
+        width: 238px;
+    }
+ }
+
+ @media screen and (max-width: 991px) {
+
+    header > .container{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    header > .container > img {
+        margin-right: 35px;
+    }
+
+    header > .container form{
+        margin-right: 20px;
+    }
+
+    header > .container form, header > .container .cart {
+        margin-top: 15px;
+    }
+
+    header form div {
+        width: 352px;
+ }
+}
+
+@media screen and (max-width: 767px) {
+    header .menu{
+        margin: 10px 0;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+
+    header .container .menu a {
+        margin: 0px 10px;
+        display: block;
+        margin-top: 17px;
+        margin-bottom: 17px;
+    }
+
+    header .container .menu a:hover, header .container .menu a:active {
+        border: none;
+        margin-top: 17px;
+        margin-bottom: 17px;
+        padding: 0;
+    }
+
+    header .container .menu{
+        display: none;
+    }
+
+    header .burgerIcon{
+        display: inline-block; 
+    }
+
+    header > .container > img {
+        margin-right: 111px;
+    }
+ 
+    header form div {
+        width: 240px;
+    }
+} 
+
+@media screen and (max-width: 521px) {
+    header form div {
+        width: 191px;
+    }
+
+    header form div input[type="text"] {
+
+        width: 115px;
+    }
+
+}
+ 
