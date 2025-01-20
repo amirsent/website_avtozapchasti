@@ -7,10 +7,9 @@
     <link rel="stylesheet" type="text/css" href="css/header_footer.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive/header_footer.css" />
-
 </head>
 <body>
-
+    <!-- HEADER -->
     <header class="container-fluid">
         <div class="container d-flex">
             <img src="images/main/Logo.png" alt="logo" height="40"/>
@@ -32,22 +31,14 @@
                     <input type="submit" name="search" value="">
                 </div>
             </form>
-            
             <div class="cart d-flex">
-                <img src="images/main/pokupka.png" alt="Cart" height="30" onclick="toggleCart()" />
+                <img src="images/main/pokupka.png" alt="Catr" height="30"/>
                 <div>
-                    <p id="total-price">0 руб</p>
-                    <a href="#" onclick="showCart()">Оформить заказ</a>
+                    <p>1000rub</p>
+                    <a href="#">Оформить заказ</a>
                 </div>
-            </div>
-            
-            <div id="cart-items" style="display: none;">
-                <h3>Ваша корзина</h3>
-                <ul id="cart-list"></ul>
-                <button onclick="clearCart()">Очистить корзину</button>
-            </div>
-            
-        </div>
+            </div>  
+        </div>  
     </header>
 
 
@@ -71,70 +62,68 @@
                     <div class="boxes d-flex">
                         <div class="box">
                             <figure>
-                                <img src="images/main/pngwing.com.png" width="270" alt="моторное масло" />
-                                <figcaption>
-                                    <p><span class="price">3799.00</span> руб</p>
-                                </figcaption>
-                                <p class="title">Моторное масло Magnatec 10w-40</p>
-                                <button onclick="addToCart('Моторное масло Magnatec 10w-40', 3799.00)">В корзину</button>
-                            </figure>
-                        </div>
-                        
-                        <div class="box">
-                            <figure>
-                                <img src="images/main/0_ha_product_card 2.jpg" width="270" alt="моторное масло" />
+                                <img src="images/main/balka_zad.jpg" width="270" alt="балка задняя" />
 
                                 <figcaption>
-                                    <p><span class="price">1049.99</span> руб</p>
+                                    <p><span class="price">7500.00</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Воздушный фильтр A-987 MASUMA </p>
-                                <button onclick="addToCart('Воздушный фильтр A-987 MASUMA', 1049.99)">В корзину</button>
+                                <p class="title"> Балка заднего моста Лада </p>
+                                <button> В корзину</button>
                             </figure>
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/masl_filtr 1(1).jpg" width="255" alt="моторное масло" />
+                                <img src="images/main/balka_pered.jpg" width="270" alt="передняя балка" />
 
                                 <figcaption>
-                                    <p><span class="price">599.00</span> руб</p>
+                                    <p><span class="price">6800.00</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Масленный фильтр iStock </p>
-                                <button onclick="addToCart('Масленный фильтр iStock', 599.00)">В корзину</button>
-
+                                <p class="title"> Балка переднего моста Лада </p>
+                                <button> В корзину</button>
                             </figure>
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/tormoz_kolodki.png" width="270" alt="тормозные колодки k-3" />
+                                <img src="images/main/amort_zad.jpg" width="270" alt="задний амортизатор" />
 
                                 <figcaption>
-                                    <p><span class="price">1450.99</span> руб</p>
+                                    <p><span class="price">2230.00</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Тормозные колодки k-3 </p>
-                                <button onclick="addToCart('Тормозные колодки k-3', 1450.99)">В корзину</button>
+                                <p class="title"> Задний амортизатор Лада 1шт </p>
+                                <button> В корзину</button>
                             </figure>
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/tormoz_diski.jpg" width="270" alt="Комплект тормозных дисков Лада" />
+                                <img src="images/main/amort_pered.jpg" width="270" alt="передний амортизатор" />
 
                                 <figcaption>
-                                    <p><span class="price">3099.00</span> руб</p>
+                                    <p><span class="price">2999.99</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Комплект тормозных дисков Лада </p>
-                                <button onclick="addToCart('Комплект тормозных дисков Лада', 3099.00)">В корзину</button>
-
+                                <p class="title"> Передний амортизатор 1шт </p>
+                                <button> В корзину</button>
                             </figure>
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/svecchi.jpg" width="270" alt="свечи зажигания" />
+                                <img src="images/main/prussini_zad.jpg" width="270" alt="пружины задние" />
 
                                 <figcaption>
-                                    <p><span class="price">1150.00</span> руб</p>
+                                    <p><span class="price">2400.00</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Свечи зажигания ngk </p>
-                                <button onclick="addToCart('Свечи зажигания ngk', 1150.00)">В корзину</button>
+                                <p class="title"> Задние пружины Лада </p>
+                                <button> В корзину</button>
+                            </figure>
+                        </div>
+                        <div class="box">
+                            <figure>
+                                <img src="images/main/prussini_pered.jpg" width="270" alt="передние пружины" />
+
+                                <figcaption>
+                                    <p><span class="price">2560.00</span> руб</p>
+                                </figcaption>
+                                <p class="title"> Пружины Лада </p>
+                                <button> В корзину</button>
                             </figure>
                         </div>
                         
@@ -184,7 +173,6 @@
 </body>
 </html> 
 
-
 <script>
     function filterProducts() {
         const input = document.getElementById('search-input');
@@ -205,72 +193,6 @@
         });
     }
 </script>
-
-
-<script>
-    // Массив для хранения товаров в корзине
-    let cart = [];
-
-    // Функция добавления товара в корзину
-    function addToCart(productTitle, productPrice) {
-        // Добавляем товар в массив корзины
-        cart.push({ title: productTitle, price: parseFloat(productPrice) });
-
-        // Обновляем отображение корзины
-        updateCart();
-    }
-
-    // Функция обновления корзины
-    function updateCart() {
-        const cartList = document.getElementById('cart-list');
-        const totalPriceElement = document.getElementById('total-price');
-
-        // Очищаем список товаров
-        cartList.innerHTML = '';
-
-        // Общая стоимость товаров
-        let totalPrice = 0;
-
-        // Генерируем список товаров
-        cart.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.textContent = `${item.title} - ${item.price.toFixed(2)} руб`;
-
-            // Кнопка для удаления товара
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Удалить';
-            removeButton.onclick = () => removeFromCart(index);
-
-            li.appendChild(removeButton);
-            cartList.appendChild(li);
-
-            // Суммируем стоимость
-            totalPrice += item.price;
-        });
-
-        // Обновляем общую стоимость
-        totalPriceElement.textContent = `${totalPrice.toFixed(2)} руб`;
-    }
-
-    // Функция удаления товара из корзины
-    function removeFromCart(index) {
-        cart.splice(index, 1); // Удаляем товар из массива
-        updateCart(); // Обновляем корзину
-    }
-
-    // Очистка корзины
-    function clearCart() {
-        cart = [];
-        updateCart();
-    }
-
-    // Показать или скрыть корзину
-    function toggleCart() {
-        const cartItems = document.getElementById('cart-items');
-        cartItems.style.display = cartItems.style.display === 'none' ? 'block' : 'none';
-    }
-</script>
-
 
 <script>
     function sortProducts(order) {

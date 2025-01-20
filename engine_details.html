@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/header_footer.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive/header_footer.css" />
+    
 </head>
 <body>
     <header class="container-fluid">
@@ -14,24 +15,35 @@
             <img src="images/main/Logo.png" alt="logo" height="40"/>
             <img class="burgerIcon" src="images/main/burger_menu.png" alt="menu" />
             <nav class="menu">
-                <a class="active" href="#">Каталог</a>
-                <a href="#">О нас</a>
-                <a href="#">Оплата и доставка</a>
-                <a href="#">Контакты</a>
+                <a class="active" href="index.html">Каталог</a>
+                <a href="about_us.html">О нас</a>
+                <a href="Payment_and_delivery.html">Оплата и доставка</a>
+                <a href="contacts.html">Контакты</a>
             </nav>
-            <form name="search" action="#" method="get">
+            <form name="search" method="get">
                 <div class="d-flex">
-                    <input type="text" name="search" placeholder="Поиск по каталогу" />
+                    <input 
+                        type="text"
+                        id="search-input" 
+                        name="search"
+                        placeholder="Поиск по каталогу"
+                        oninput="filterProducts()" />
                     <input type="submit" name="search" value="">
                 </div>
             </form>
             <div class="cart d-flex">
-                <img src="images/main/pokupka.png" alt="Catr" height="30"/>
+                <img src="images/main/pokupka.png" alt="Cart" height="30" onclick="toggleCart()" />
                 <div>
-                    <p>1000rub</p>
-                    <a href="#">Оформить заказ</a>
+                    <p id="total-price">0 руб</p>
+                    <a href="#" onclick="showCart()">Оформить заказ</a>
                 </div>
-            </div>  
+            </div>
+            
+            <div id="cart-items" style="display: none;">
+                <h3>Ваша корзина</h3>
+                <ul id="cart-list"></ul>
+                <button onclick="clearCart()">Очистить корзину</button>
+            </div>
         </div>  
     </header>
 
@@ -41,13 +53,16 @@
                 <nav class="menu">
                     <a href="index.html">Запчасти для ТО</a>
                     <a href="engine_details.html">Двигатель</a>
-                    <a href="#">Топливная система</a>
-                    <a class="active" href="#">Трансмисия</a>
-                    <a href="#">Ходовая часть</a>
+                    <a href="fuel_system.html">Топливная система</a>
+                    <a class="active" href="transmission.html">Трансмисия</a>
+                    <a href="undercarriage.html">Ходовая часть</a>
                 </nav>
                 <div class="items">
                     <div class="sort">
-                        <p>Сортировать по: <a class="active" href="#"> Цена </a> </p>
+                        <p>Сортировать по цене: 
+                            <button onclick="sortProducts('asc')">По возрастанию</button>
+                            <button onclick="sortProducts('desc')">По убыванию</button>
+                        </p>
                     </div>
                     <div class="boxes d-flex">
                         <div class="box">
@@ -58,7 +73,8 @@
                                     <p><span class="price">15330.00</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Головка блока 1118 в сборе </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('Головка блока 1118 в сборе', 15330.00)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -69,7 +85,8 @@
                                     <p><span class="price">199.99</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Прокладка блока цилиндров </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('прокладка блока цилиндров', 199.00)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -80,7 +97,8 @@
                                     <p><span class="price">125.99</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Прокладка впускного коллектора </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('прокладка впускного коллектора', 125.99)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -91,7 +109,8 @@
                                     <p><span class="price">1450.99</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Коллектор выпускной ваз </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('коллектор выпускной ваз', 1450.99)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -102,7 +121,8 @@
                                     <p><span class="price">21000.00</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Коленвал Лада</p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('Коленвал Лада', 21000.00)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -113,7 +133,8 @@
                                     <p><span class="price">3120.00</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Катушка зажигания Лада </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('катушка зажигания Лада', 3120.00)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -124,7 +145,8 @@
                                     <p><span class="price">1420.00</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Ремень ГРМ Powergrid </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('Ремень ГРМ Powergrid', 1420.00)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -135,7 +157,8 @@
                                     <p><span class="price">2820.00</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Порши Лада D-79.4 </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('Поршни Лада D-79.4', 2820.00)">В корзину</button>
+
                             </figure>
                         </div>
                         <div class="box">
@@ -146,13 +169,13 @@
                                     <p><span class="price">2150.00</span> руб</p>
                                 </figcaption>
                                 <p class="title"> Гильзы цилиндров 79.00мм </p>
-                                <button> В корзину</button>
+                                <button onclick="addToCart('Гильзы цилиндров 79.00mm', 2150.00)">В корзину</button>
+
                             </figure>
                         </div>
                         
                     </div>
                     <div class="pagination">
-
 
                     </div>
                 </div>
@@ -198,3 +221,110 @@
 
 </body>
 </html> 
+
+<script>
+    function filterProducts() {
+        const input = document.getElementById('search-input');
+        const filter = input.value.toLowerCase(); // Преобразуем введённый текст в нижний регистр
+        const products = document.querySelectorAll('.box'); // Получаем все карточки товаров
+
+        products.forEach(product => {
+            // Извлекаем название товара и цену
+            const title = product.querySelector('.title').textContent.toLowerCase();
+            const price = product.querySelector('.price').textContent.toLowerCase();
+
+            // Если текст совпадает с названием или ценой, показываем товар, иначе скрываем
+            if (title.includes(filter) || price.includes(filter)) {
+                product.style.display = ''; // Показываем карточку
+            } else {
+                product.style.display = 'none'; // Скрываем карточку
+            }
+        });
+    }
+</script>
+
+<script>
+    // Массив для хранения товаров в корзине
+    let cart = [];
+
+    // Функция добавления товара в корзину
+    function addToCart(productTitle, productPrice) {
+        // Добавляем товар в массив корзины
+        cart.push({ title: productTitle, price: parseFloat(productPrice) });
+
+        // Обновляем отображение корзины
+        updateCart();
+    }
+
+    // Функция обновления корзины
+    function updateCart() {
+        const cartList = document.getElementById('cart-list');
+        const totalPriceElement = document.getElementById('total-price');
+
+        // Очищаем список товаров
+        cartList.innerHTML = '';
+
+        // Общая стоимость товаров
+        let totalPrice = 0;
+
+        // Генерируем список товаров
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.textContent = `${item.title} - ${item.price.toFixed(2)} руб`;
+
+            // Кнопка для удаления товара
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Удалить';
+            removeButton.onclick = () => removeFromCart(index);
+
+            li.appendChild(removeButton);
+            cartList.appendChild(li);
+
+            // Суммируем стоимость
+            totalPrice += item.price;
+        });
+
+        // Обновляем общую стоимость
+        totalPriceElement.textContent = `${totalPrice.toFixed(2)} руб`;
+    }
+
+    // Функция удаления товара из корзины
+    function removeFromCart(index) {
+        cart.splice(index, 1); // Удаляем товар из массива
+        updateCart(); // Обновляем корзину
+    }
+
+    // Очистка корзины
+    function clearCart() {
+        cart = [];
+        updateCart();
+    }
+
+    // Показать или скрыть корзину
+    function toggleCart() {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.style.display = cartItems.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+
+
+<script>
+    function sortProducts(order) {
+        const productsContainer = document.querySelector('.boxes'); // Контейнер с товарами
+        const products = Array.from(productsContainer.querySelectorAll('.box')); // Все товары
+
+        // Сортируем массив товаров
+        products.sort((a, b) => {
+            const priceA = parseFloat(a.querySelector('.price').textContent);
+            const priceB = parseFloat(b.querySelector('.price').textContent);
+            return order === 'asc' ? priceA - priceB : priceB - priceA;
+        });
+
+        // Удаляем старые товары из контейнера
+        productsContainer.innerHTML = '';
+
+        // Добавляем отсортированные товары обратно
+        products.forEach(product => productsContainer.appendChild(product));
+    }
+</script>

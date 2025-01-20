@@ -15,14 +15,19 @@
             <img src="images/main/Logo.png" alt="logo" height="40"/>
             <img class="burgerIcon" src="images/main/burger_menu.png" alt="menu" />
             <nav class="menu">
-                <a class="active" href="#">Каталог</a>
-                <a href="#">О нас</a>
-                <a href="#">Оплата и доставка</a>
-                <a href="#">Контакты</a>
+                <a class="active" href="index.html">Каталог</a>
+                <a href="about_us.html">О нас</a>
+                <a href="Payment_and_delivery.html">Оплата и доставка</a>
+                <a href="contacts.html">Контакты</a>
             </nav>
-            <form name="search" action="#" method="get">
+            <form name="search" method="get">
                 <div class="d-flex">
-                    <input type="text" name="search" placeholder="Поиск по каталогу" />
+                    <input 
+                        type="text"
+                        id="search-input" 
+                        name="search"
+                        placeholder="Поиск по каталогу"
+                        oninput="filterProducts()" />
                     <input type="submit" name="search" value="">
                 </div>
             </form>
@@ -41,15 +46,18 @@
         <div class="container">
             <div class="block1 d-flex">
                 <nav class="menu">
-                    <a href="#">Запчасти для ТО</a>
+                    <a href="index.html">Запчасти для ТО</a>
                     <a href="engine_details.html">Двигатель</a>
                     <a href="fuel_system.html">Топливная система</a>
-                    <a class="active" href="#">Трансмисия</a>
-                    <a href="#">Ходовая часть</a>
+                    <a class="active" href="transmission.html">Трансмисия</a>
+                    <a href="undercarriage.html">Ходовая часть</a>
                 </nav>
                 <div class="items">
                     <div class="sort">
-                        <p>Сортировать по: <a class="active" href="#"> Цена </a> </p>
+                        <p>Сортировать по цене: 
+                            <button onclick="sortProducts('asc')">По возрастанию</button>
+                            <button onclick="sortProducts('desc')">По убыванию</button>
+                        </p>
                     </div>
                     <div class="boxes d-flex">
                         <div class="box">
@@ -76,45 +84,45 @@
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/masl_filtr 1(1).jpg" width="255" alt="моторное масло" />
+                                <img src="images/main/topliv_filtr.jpg" width="270" alt="топливный фильтр" />
 
                                 <figcaption>
-                                    <p><span class="price">599.00</span> руб</p>
+                                    <p><span class="price">230.00</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Масленный фильтр iStock </p>
+                                <p class="title"> Топливный фильтр Лада </p>
                                 <button> В корзину</button>
                             </figure>
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/tormoz_kolodki.png" width="270" alt="тормозные колодки k-3" />
+                                <img src="images/main/tnvd.jpg" width="270" alt="тнвд" />
 
                                 <figcaption>
-                                    <p><span class="price">1450.99</span> руб</p>
+                                    <p><span class="price">1650.99</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Тормозные колодки k-3 </p>
+                                <p class="title"> ТНВД Лада </p>
                                 <button> В корзину</button>
                             </figure>
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/tormoz_diski.jpg" width="270" alt="Комплект тормозных дисков Лада" />
+                                <img src="images/main/topliv_forsunki.jpg" width="270" alt="топливные форсунки" />
 
                                 <figcaption>
-                                    <p><span class="price">3099.00</span> руб</p>
+                                    <p><span class="price">2990.00</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Комплект тормозных дисков Лада </p>
+                                <p class="title"> Комплект топливных форсунок ЭЛКАР </p>
                                 <button> В корзину</button>
                             </figure>
                         </div>
                         <div class="box">
                             <figure>
-                                <img src="images/main/svecchi.jpg" width="270" alt="свечи зажигания" />
+                                <img src="images/main/datchik_topliva.jpg" width="270" alt="датчик топлива" />
 
                                 <figcaption>
-                                    <p><span class="price">1150.00</span> руб</p>
+                                    <p><span class="price">560.00</span> руб</p>
                                 </figcaption>
-                                <p class="title"> Свечи зажигания ngk </p>
+                                <p class="title"> Датчик уровня топлива Лада </p>
                                 <button> В корзину</button>
                             </figure>
                         </div>
@@ -164,3 +172,44 @@
     
 </body>
 </html> 
+
+<script>
+    function filterProducts() {
+        const input = document.getElementById('search-input');
+        const filter = input.value.toLowerCase(); // Преобразуем введённый текст в нижний регистр
+        const products = document.querySelectorAll('.box'); // Получаем все карточки товаров
+
+        products.forEach(product => {
+            // Извлекаем название товара и цену
+            const title = product.querySelector('.title').textContent.toLowerCase();
+            const price = product.querySelector('.price').textContent.toLowerCase();
+
+            // Если текст совпадает с названием или ценой, показываем товар, иначе скрываем
+            if (title.includes(filter) || price.includes(filter)) {
+                product.style.display = ''; // Показываем карточку
+            } else {
+                product.style.display = 'none'; // Скрываем карточку
+            }
+        });
+    }
+</script>
+
+<script>
+    function sortProducts(order) {
+        const productsContainer = document.querySelector('.boxes'); // Контейнер с товарами
+        const products = Array.from(productsContainer.querySelectorAll('.box')); // Все товары
+
+        // Сортируем массив товаров
+        products.sort((a, b) => {
+            const priceA = parseFloat(a.querySelector('.price').textContent);
+            const priceB = parseFloat(b.querySelector('.price').textContent);
+            return order === 'asc' ? priceA - priceB : priceB - priceA;
+        });
+
+        // Удаляем старые товары из контейнера
+        productsContainer.innerHTML = '';
+
+        // Добавляем отсортированные товары обратно
+        products.forEach(product => productsContainer.appendChild(product));
+    }
+</script>
